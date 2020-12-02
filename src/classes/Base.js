@@ -1,10 +1,11 @@
 export default  class Base {
     constructor(options = false) {
         this.placeWidth = 17.5
+        this.placeHeight = 85
         this.width = 1
-        this.height = 85
+        this.height = 1
         this.strokeWidth = options && options.strokeWidth ? options.strokeWidth : 1;
-        this.strokeColor = options && options.strokeColor ? options.strokeWidth : "#333333";
+        this.strokeColor = options && options.strokeColor ? options.strokeWidth : "#555555";
         this.id = false;
         
     }
@@ -13,8 +14,8 @@ export default  class Base {
         return this.placeWidth * this.width;
     }
 
-    getHeight() {
-        return this.height ;
+    getHeight() {        
+        return this.placeHeight * this.height;
     }
 
     svg() {

@@ -1,5 +1,8 @@
 import BaseElement from "@/classes/elements/BaseElement.js"
 import DetailCorpus from "@/classes/details/DetailCorpus.js"
+import DetailIndicator from "@/classes/details/DetailIndicator.js"
+import DetailHandle from "@/classes/details/DetailHandle.js"
+import DetailContact from "@/classes/details/DetailContact.js"
 
 export default class ElementBreaker extends BaseElement {
 
@@ -8,37 +11,38 @@ export default class ElementBreaker extends BaseElement {
         this.color = options && options.color ? options.color : "#EEEEEE";        
         this.height = 85;                
         this.id = "ElementBreaker";
+        this.caption="1P"
     }
 
+    
     content() {
         return [
-            [DetailCorpus, DetailCorpus],            
+            [new DetailCorpus(), new DetailCorpus(), new DetailCorpus()],      
+            [new DetailIndicator(), new DetailIndicator(), new DetailIndicator()],
+            [new DetailContact({caption:'1'}), new DetailContact(), new DetailContact()],
+            [new DetailContact({position:'down', caption:'2'}), new DetailContact({position:'down'}), new DetailContact({position:'down'})],
+            [new DetailHandle({places:3})]
         ]
     }
 
     svg() {
-        //const cl = DetailCorpus;
-        //const d = new DetailCorpus();
-        //const d = new cl({width: 2});
-        //return d.svg();
+
         let result = '';
         const content = this.content();
         
         const self = this;
+
         content.forEach(function(layer) {
             let shift = 0;
             layer.forEach(function(el) {
                 const x = shift * self.placeWidth;
-                result += new el({x:x}).svg();
+                el.x = x;
+                result += el.svg();
                 shift++
             })
         })
-        /*
-        return `
-        <use xlink:href="#DetailCorpus"/>
+
         
-        `
-        */
         return result;
     }
 }

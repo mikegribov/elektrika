@@ -7,14 +7,20 @@
     >
         <rect x="0" y="0" :width="width" :height="height" stroke-width="1" fill="#EEEEEE" stroke="#777777" ></rect>
         <g v-html="svgContent"></g>
-        <use xlink:href="#ElementBreaker" x="5"  y="50"/>
+        <use xlink:href="#ElementBreaker1P" x="5"  y="50"/>
+        <use xlink:href="#ElementBreaker1PN" x="25"  y="50"/>
+        <use xlink:href="#ElementBreaker3P" x="65"  y="50"/>
+        <use xlink:href="#ElementBreaker3PN" x="120"  y="50"/>
     </svg>
 </template>
 
 <script>
 
-    import DetailCorpus from '@/classes/details/DetailCorpus.js'
-    import ElementBreaker from '@/classes/elements/ElementBreaker.js'
+    
+    import ElementBreaker1P from '@/classes/elements/ElementBreaker1P.js'
+    import ElementBreaker1PN from '@/classes/elements/ElementBreaker1PN.js'
+    import ElementBreaker3P from '@/classes/elements/ElementBreaker3P.js'
+    import ElementBreaker3PN from '@/classes/elements/ElementBreaker3PN.js'
     export default {
         data() {
             return {
@@ -45,9 +51,8 @@
         methods: {
             getSvgContent() {
                 if (!this.$_svgContent) {
-                    this.$_svgContent = new DetailCorpus().asSymbol() + new ElementBreaker().asSymbol()
-                }
-                console.log(this.$_svgContent)
+                    this.$_svgContent = new ElementBreaker1P().asSymbol() + new ElementBreaker1PN().asSymbol() + new ElementBreaker3P().asSymbol() + new ElementBreaker3PN().asSymbol()
+                }           
                 return this.$_svgContent;
             }
         },
