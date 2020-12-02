@@ -17,8 +17,8 @@ export default class ElementBreaker1P extends BaseBreaker {
         return [
             [new DetailCorpus()],      
             [new DetailIndicator()],
-            [new DetailContact({caption:'1'})],
-            [new DetailContact({position:'down', caption:'2'})],
+            [new DetailContact({caption:'2'})],
+            [new DetailContact({position:'down', caption:'1'})],
             [new DetailHandle()]
         ]
     }
