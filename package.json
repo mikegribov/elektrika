@@ -2,6 +2,11 @@
   "name": "Electrics",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/mikegribov/elektrika",
+  "author": {
+    "name" : "Michael Gribov",
+    "email" : "mihail.g.gribov@gmail.com"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
