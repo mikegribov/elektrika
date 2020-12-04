@@ -1,10 +1,6 @@
 import BaseBreaker from "@/classes/elements/BaseBreaker.js"
-import Empty from "@/classes/elements/Empty.js"
-import DetailCorpus2 from "@/classes/details/DetailCorpus2.js"
-import DetailIndicator from "@/classes/details/DetailIndicator.js"
-import DetailHandle from "@/classes/details/DetailHandle.js"
-import DetailContact from "@/classes/details/DetailContact.js"
-import DetailButton from "@/classes/details/DetailButton.js"
+import {Empty, DetailCorpus2, DetailButton, DetailIndicator, DetailHandle, DetailContact } from "@/classes/@Details"
+
 
 
 export default class ElementRcd extends BaseBreaker {

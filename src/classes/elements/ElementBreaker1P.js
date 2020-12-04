@@ -1,8 +1,8 @@
+
 import BaseBreaker from "@/classes/elements/BaseBreaker.js"
-import DetailCorpus from "@/classes/details/DetailCorpus.js"
-import DetailIndicator from "@/classes/details/DetailIndicator.js"
-import DetailHandle from "@/classes/details/DetailHandle.js"
-import DetailContact from "@/classes/details/DetailContact.js"
+
+import { DetailCorpus, DetailIndicator, DetailHandle, DetailContact} from "@/classes/@Details"
+
 
 export default class ElementBreaker1P extends BaseBreaker {
 
