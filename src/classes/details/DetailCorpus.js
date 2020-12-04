@@ -15,8 +15,7 @@ export default class DetailCorpus extends BaseDetail {
         const x = this.x;
         const y = this.y;
         return `
-        <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1" :stroke-width="${this.strokeWidth}" fill="${this.color}" stroke="${this.strokeColor}"/>
-        <line x1="${x + w/2}" x2="${x + w/2}" y1="${y}" y2="${y + h}" stroke-width="${this.strokeWidth/5}" stroke="#777777"/>  
+        <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1" :stroke-width="${this.strokeWidth}" fill="${this.color}" stroke="${this.strokeColor}"/>        
         <line x1="${x}" x2="${x + w}" y1="${y + h/2-d1}" y2="${y + h/2-d1}" stroke-width="${this.strokeWidth/2}" stroke="${this.strokeColor}"/>  
         <line x1="${x}" x2="${x + w}" y1="${y + h/2 + d1}" y2="${y + h/2 + d1}" stroke-width="${this.strokeWidth/2}" stroke="${this.strokeColor}"/>  
         <line x1="${x}" x2="${x + w}" y1="${y + h/2 - d2}" y2="${y + h/2 - d2}" stroke-width="${this.strokeWidth/4}" stroke="${this.strokeColor}"/>  

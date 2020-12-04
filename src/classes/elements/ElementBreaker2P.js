@@ -8,7 +8,7 @@ export default class ElementBreaker1PN extends BaseBreaker {
 
     constructor(options = false) {        
         super(options)        
-        this.id = "ElementBreaker1PN";
+        this.id = "ElementBreaker2P";
         this.caption="2P"
     }
 

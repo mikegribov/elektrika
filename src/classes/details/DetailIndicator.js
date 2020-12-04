@@ -22,7 +22,7 @@ export default class DetailCorpus extends BaseDetail {
         const h = 3; //height        
         let x = this.x + 3;
         if (this.position == right_down || this.position == right_up) {
-            x += w;
+            x += w - 1;
         }
         let y = this.y + this.placeHeight / 2 + 8;
         if (this.position == left_up || this.position == right_up) {
