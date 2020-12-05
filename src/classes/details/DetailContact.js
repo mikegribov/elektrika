@@ -12,8 +12,9 @@ export default class DetailContact extends BaseDetail {
     }
 
     svg() {        
+        
         const x = this.x + this.getWidth() / 2;
-        const y = this.position == 'up' ? 3.5 * this.radius : this.placeHeight - 3.5 * this.radius;        
+        const y = (this.position == 'middle' ? this.getHeight()/2 : (this.position == 'up' ? 3.5 * this.radius : this.getHeight()  - 3.5 * this.radius)) + (-this.getHeight() + this.placeHeight)/2;        
         const ty = this.position == 'up' ? y - this.radius -1 : y + 3 * this.radius;
         const t = 0.5;
         const r = this.radius - t;

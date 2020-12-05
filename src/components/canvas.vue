@@ -13,6 +13,8 @@
         <use xlink:href="#ElementBreaker3PN" x="120"  y="50"/>
         <use xlink:href="#ElementRcd" x="200"  y="50"/>
         <use xlink:href="#ElementRcd3" x="240"  y="50"/>
+        <use xlink:href="#ElementClamp" x="320"  y="50"/>
+        
     </svg>
 </template>
 
@@ -25,6 +27,7 @@
     import ElementBreaker3PN from '@/classes/elements/ElementBreaker3PN.js'
     import ElementRcd from '@/classes/elements/ElementRcd.js'
     import ElementRcd3 from '@/classes/elements/ElementRcd3.js'
+    import ElementClamp from '@/classes/elements/ElementClamp.js'
     export default {
         data() {
             return {
@@ -55,13 +58,15 @@
         methods: {
             getSvgContent() {
                 if (!this.$_svgContent) {
-                    this.$_svgContent = new ElementRcd().asSymbol() + new ElementRcd3().asSymbol()
+                    this.$_svgContent = new ElementRcd().asSymbol() + new ElementRcd3().asSymbol() + new ElementClamp().asSymbol() +
                      + new ElementBreaker1P().asSymbol() + new ElementBreaker1PN().asSymbol() + new ElementBreaker3P().asSymbol() + new ElementBreaker3PN().asSymbol()
                 }           
                 return this.$_svgContent;
             }
         },
-
+    mounted() {
+        
+    },
         computed: {
             svgContent: function() {
                 
