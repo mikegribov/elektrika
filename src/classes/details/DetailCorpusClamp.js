@@ -46,8 +46,7 @@ export default class DetailCorpusClamp extends BaseDetail {
             const x = this.x;
             const y = this.y - (H - PH)/2;
             const d1 =  5 / 2
-            const d2 = 25 / 2
-            console.log(W, H);
+            const d2 = 25 / 2            
             return `
                 <rect x="${x}" y="${y}" width="${W}" height="${H}" rx="1" :stroke-width="${this.strokeWidth}" fill="${color}" stroke="${this.strokeColor}"/>        
                 <line x1="${x}" x2="${x + W}" y1="${y + H / 2 - d1}" y2="${y + H / 2 - d1}" stroke-width="${this.strokeWidth / 2}" stroke="${this.strokeColor}"/>  

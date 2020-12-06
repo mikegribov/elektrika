@@ -1,14 +1,11 @@
 import BaseElement from "@/classes/elements/BaseElement.js"
-import DetailCorpus from "@/classes/details/DetailCorpus.js"
-import DetailIndicator from "@/classes/details/DetailIndicator.js"
-import DetailHandle from "@/classes/details/DetailHandle.js"
-import DetailContact from "@/classes/details/DetailContact.js"
+
+import { DetailCorpus, DetailIndicator, DetailHandle, DetailContact} from "@/classes/@Details"
 
 export default class ElementBreaker extends BaseElement {
 
     constructor(options = false) {        
-        super(options)
-        this.color = options && options.color ? options.color : "#EEEEEE";        
+        super(options)        
         this.height = 85;                
         this.id = "ElementBreaker";
         this.caption="1P"

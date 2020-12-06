@@ -3,6 +3,7 @@ import Base from "@/classes/Base.js"
 export default class BaseElement extends Base {
     constructor(options) {        
         super(options)
+        this.color = options && options.color ? options.color : "#EEEEEE";        
         this.id = options && options.id ? options.id : false;
         this.number=1
     }
