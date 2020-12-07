@@ -36,7 +36,8 @@ export default class DetailCorpusClamp extends BaseDetail {
     svg() {
         const i = SQARES.findIndex(val => val == this.sqare);
         if (i > -1) {            
-            const color = "#AAAAAA";
+            const color = this.color;
+            console.log(this.color)
             //const colorL = "#DD7777";
             //const colorD = "#774444";
             //const h = listh[i];            

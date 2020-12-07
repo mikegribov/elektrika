@@ -9,10 +9,11 @@ export default class ElementClamp extends BaseElement {
         this.id = "ElementClamp";        
         this.sqare = options && options.sqare ? options.sqare : 2.5; //4, 6, 10        
         this.caption = "Clamp-" + this.sqare;
+        this.color = options && options.color ? options.color : "#AAAAAA";
     }
 
     content() {        
-        const corpus = new DetailCorpusClamp({ sqare: this.sqare });
+        const corpus = new DetailCorpusClamp({ sqare: this.sqare, color: this.color});
         return [
             [corpus],
             [new DetailContact({caption: '2', radius: 1.8, placeWidth: corpus.getWidth(), height: corpus.getHeight()/corpus.placeHeight})],
