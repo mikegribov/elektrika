@@ -1,16 +1,16 @@
-import BaseBreaker from "@/classes/elements/BaseBreaker";
-import { Options } from "@/classes/Options";
+import BaseBreaker from "./BaseBreaker";
+import { Options } from "../Options";
 import {
   DetailCorpus,
   DetailIndicator,
   DetailHandle,
   DetailContact
-} from "@/classes/@Details";
+} from "../@Details";
 
 export default class ElementBreaker3PN extends BaseBreaker {
   constructor(options?: Options) {
     super(options);
-    this.options.label = "4P";
+    this.options.label = "3P+N";
   }
 
   content() {
@@ -31,13 +31,13 @@ export default class ElementBreaker3PN extends BaseBreaker {
         new DetailContact({ label: "2" } as Options),
         new DetailContact({ label: "4" } as Options),
         new DetailContact({ label: "6" } as Options),
-        new DetailContact({ label: "8" } as Options)
+        new DetailContact({ label: "N" } as Options)
       ],
       [
         new DetailContact({ positionY: "down", label: "1" } as Options),
         new DetailContact({ positionY: "down", label: "3" } as Options),
         new DetailContact({ positionY: "down", label: "5" } as Options),
-        new DetailContact({ positionY: "down", label: "7" } as Options)
+        new DetailContact({ positionY: "down", label: "N" } as Options)
       ],
       [new DetailHandle({ places: 4 } as Options)]
     ];

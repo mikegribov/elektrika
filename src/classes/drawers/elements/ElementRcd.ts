@@ -1,5 +1,5 @@
-import BaseBreaker from "@/classes/elements/BaseBreaker";
-import { Options } from "@/classes/Options";
+import BaseBreaker from "./BaseBreaker";
+import { Options } from "../Options";
 
 import {
   Empty,
@@ -8,7 +8,7 @@ import {
   DetailIndicator,
   DetailHandle,
   DetailContact
-} from "@/classes/@Details";
+} from "../@Details";
 
 export default class ElementRcd extends BaseBreaker {
   constructor(options?: Options) {

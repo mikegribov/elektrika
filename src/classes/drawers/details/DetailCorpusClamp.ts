@@ -1,5 +1,5 @@
-import BaseDetail from "@/classes/details/BaseDetail";
-import { Options } from "@/classes/Options";
+import BaseDetail from "./BaseDetail";
+import { Options } from "../Options";
 
 //const listL = [41.5, 41.5, 42, 46];
 const listH = [45.5, 45.5, 46, 46.5];

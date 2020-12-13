@@ -1,4 +1,4 @@
-import { Options } from "@/classes/Options";
+import { Options } from "./Options";
 
 const colours = {
   "aliceblue": "#f0f8ff", "antiquewhite": "#FAEBD7", "aqua": "#00ffff", "aquamarine": "#7fffd4", "azure": "#f0ffff",
@@ -28,7 +28,7 @@ const colours = {
 };
 type tColorNames = keyof typeof colours;
 
-export default abstract class Base {
+export default abstract class BaseDrawer {
 
 
   options: Options = new Options();

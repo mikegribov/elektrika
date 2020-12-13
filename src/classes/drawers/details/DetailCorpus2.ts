@@ -1,5 +1,5 @@
-import DetailCorpus from "@/classes/details/DetailCorpus";
-import { Options } from "@/classes/Options";
+import DetailCorpus from "./DetailCorpus";
+import { Options } from "../Options";
 
 export default class DetailCorpus2 extends DetailCorpus {
   constructor(options?: Options) {

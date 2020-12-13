@@ -1,5 +1,5 @@
-import ElementClamp from "@/classes/elements/ElementClamp";
-import { Options } from "@/classes/Options";
+import ElementClamp from "./ElementClamp";
+import { Options } from "../Options";
 
 export default class ElementClampE extends ElementClamp {
   constructor(options?: Options) {

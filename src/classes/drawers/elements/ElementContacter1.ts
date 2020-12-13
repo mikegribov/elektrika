@@ -1,5 +1,5 @@
-import BaseContacter from "@/classes/elements/BaseContacter";
-import { Options } from "@/classes/Options";
+import BaseContacter from "./BaseContacter";
+import { Options } from "../Options";
 
 export default class ElementContacter1 extends BaseContacter {
   constructor(options?: Options) {

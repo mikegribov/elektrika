@@ -50,31 +50,6 @@ export class Options implements IntOptions {
     sqare: TCrossSqare = 1.5;
     formula = '20';
 
-    /*
-    constructor(
-        x?: number,
-        y?: number,
-        placeWidth?: number,
-        placeHeight?: number,
-        width?: number,
-        height?: number,
-        color?: string,
-        strokeColor?: string,
-        strokeWidth?: number,
-        length?: number,
-        radius?: number,
-        positionX?: TDirectionX,
-        positionY?: TDirectionY,
-        label?: string,
-        state?: TState,
-        places?: number,
-        colorOn?: string,
-        colorOff?: string
-    ) {
-
-    }
-    */
-
     assign(value: IntOptions | undefined): void {
 
         if (value) {

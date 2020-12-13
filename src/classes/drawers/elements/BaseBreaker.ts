@@ -1,12 +1,12 @@
-import BaseElement from "@/classes/elements/BaseElement";
+import BaseElement from "@/classes/drawers/elements/BaseElement";
 
-import { Options } from "@/classes/Options";
+import { Options } from "../Options";
 import {
   DetailCorpus,
   DetailIndicator,
   DetailHandle,
   DetailContact
-} from "@/classes/@Details";
+} from "../@Details";
 
 export default class BaseBreaker extends BaseElement {
   constructor(options: Options | undefined) {

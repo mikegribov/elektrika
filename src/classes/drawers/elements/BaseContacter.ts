@@ -1,11 +1,11 @@
-import BaseElement from "@/classes/elements/BaseElement";
-import { Options } from "@/classes/Options";
+import BaseElement from "./BaseElement";
+import { Options } from "../Options";
 
 import {
   DetailCorpus,
   DetailIndicator,
   DetailContact
-} from "@/classes/@Details";
+} from "../@Details";
 
 export default class BaseContacter extends BaseElement {
   constructor(options?: Options) {

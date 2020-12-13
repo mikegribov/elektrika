@@ -1,5 +1,5 @@
-import BaseDetail from "@/classes/details/BaseDetail";
-import { Options } from "@/classes/Options";
+import BaseDetail from "./BaseDetail";
+import { Options } from "../Options";
 
 export default class DetailContact extends BaseDetail {
   constructor(options?: Options) {

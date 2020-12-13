@@ -35,19 +35,19 @@
 <script>
 import { Options, Vue } from "vue-class-component";
 
-import ElementBreaker1P from "@/classes/elements/ElementBreaker1P";
+import ElementBreaker1P from "@/classes/drawers/elements/ElementBreaker1P";
 
-import ElementBreaker1PN from "@/classes/elements/ElementBreaker1PN";
-import ElementBreaker3P from "@/classes/elements/ElementBreaker3P";
-import ElementBreaker3PN from "@/classes/elements/ElementBreaker3PN";
-import ElementRcd from "@/classes/elements/ElementRcd";
-import ElementRcd3 from "@/classes/elements/ElementRcd3";
-import ElementClamp from "@/classes/elements/ElementClamp";
-import ElementClampN from "@/classes/elements/ElementClampN";
-import ElementClampE from "@/classes/elements/ElementClampE";
-import ElementContacter1 from "@/classes/elements/ElementContacter1";
+import ElementBreaker1PN from "@/classes/drawers/elements/ElementBreaker1PN";
+import ElementBreaker3P from "@/classes/drawers/elements/ElementBreaker3P";
+import ElementBreaker3PN from "@/classes/drawers/elements/ElementBreaker3PN";
+import ElementRcd from "@/classes/drawers/elements/ElementRcd";
+import ElementRcd3 from "@/classes/drawers/elements/ElementRcd3";
+import ElementClamp from "@/classes/drawers/elements/ElementClamp";
+import ElementClampN from "@/classes/drawers/elements/ElementClampN";
+import ElementClampE from "@/classes/drawers/elements/ElementClampE";
+import ElementContacter1 from "@/classes/drawers/elements/ElementContacter1";
 
-import DinRail from "@/classes/DinRail";
+import DinRail from "@/classes/drawers/DinRail";
 
 @Options({
   props: {

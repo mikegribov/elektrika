@@ -1,6 +1,6 @@
-import BaseElement from "@/classes/elements/BaseElement";
-import { Options } from "@/classes/Options";
-import { DetailCorpusClamp, DetailContact } from "@/classes/@Details";
+import BaseElement from "./BaseElement";
+import { Options } from "../Options";
+import { DetailCorpusClamp, DetailContact } from "../@Details";
 
 export default class ElementClamp extends BaseElement {
   constructor(options?: Options) {

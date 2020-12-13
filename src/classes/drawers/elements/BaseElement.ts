@@ -1,5 +1,5 @@
-import Base from "@/classes/Base";
-import { Options } from "@/classes/Options";
+import Base from "../BaseDrawer";
+import { Options } from "../Options";
 import BaseDetail from '../details/BaseDetail';
 
 export default abstract class BaseElement extends Base {
