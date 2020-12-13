@@ -15,8 +15,10 @@
       fill="#EEEEEE"
       stroke="#777777"
     ></rect>
-    <g v-html="svgContent"></g>
+
+    <g v-html="getSvgContent()"></g>
     <use xlink:href="#DinRail" x="0" y="75" />
+
     <use xlink:href="#ElementBreaker1P" x="5" y="50" />
     <use xlink:href="#ElementBreaker1PN" x="25" y="50" />
     <use xlink:href="#ElementBreaker3P" x="65" y="50" />
@@ -31,18 +33,60 @@
 </template>
 
 <script>
-import ElementBreaker1P from "@/classes/elements/ElementBreaker1P.js";
-import ElementBreaker1PN from "@/classes/elements/ElementBreaker1PN.js";
-import ElementBreaker3P from "@/classes/elements/ElementBreaker3P.js";
-import ElementBreaker3PN from "@/classes/elements/ElementBreaker3PN.js";
-import ElementRcd from "@/classes/elements/ElementRcd.js";
-import ElementRcd3 from "@/classes/elements/ElementRcd3.js";
-import ElementClamp from "@/classes/elements/ElementClamp.js";
-import ElementClampN from "@/classes/elements/ElementClampN.js";
-import ElementClampE from "@/classes/elements/ElementClampE.js";
-import ElementContacter1 from "@/classes/elements/ElementContacter1.js";
-import DinRail from "@/classes/DinRail.js";
+import { Options, Vue } from "vue-class-component";
 
+import ElementBreaker1P from "@/classes/elements/ElementBreaker1P";
+
+import ElementBreaker1PN from "@/classes/elements/ElementBreaker1PN";
+import ElementBreaker3P from "@/classes/elements/ElementBreaker3P";
+import ElementBreaker3PN from "@/classes/elements/ElementBreaker3PN";
+import ElementRcd from "@/classes/elements/ElementRcd";
+import ElementRcd3 from "@/classes/elements/ElementRcd3";
+import ElementClamp from "@/classes/elements/ElementClamp";
+import ElementClampN from "@/classes/elements/ElementClampN";
+import ElementClampE from "@/classes/elements/ElementClampE";
+import ElementContacter1 from "@/classes/elements/ElementContacter1";
+
+import DinRail from "@/classes/DinRail";
+
+@Options({
+  props: {
+    width: {
+      type: [String, Number],
+      default: 500,
+    },
+
+    height: {
+      type: [String, Number],
+      default: 200,
+    },
+  },
+})
+export default class Canvas extends Vue {
+  svgContent = "";
+
+  getSvgContent() {
+    if (!this.svgContent) {
+      this.svgContent =
+        new DinRail({
+          color: "#DDDDDD",
+        }).asSymbol() +
+        new ElementRcd().asSymbol() +
+        new ElementRcd3().asSymbol() +
+        new ElementClamp().asSymbol() +
+        new ElementClampN().asSymbol() +
+        new ElementClampE().asSymbol() +
+        new ElementContacter1().asSymbol() +
+        new ElementBreaker1P().asSymbol() +
+        new ElementBreaker1PN().asSymbol() +
+        new ElementBreaker3P().asSymbol() +
+        new ElementBreaker3PN().asSymbol();
+    }
+    return this.svgContent;
+  }
+}
+
+/*
 export default {
   data() {
     return {
@@ -93,6 +137,8 @@ export default {
     },
   },
 };
+
+*/
 </script>
 
 <style lang="scss" scoped></style>

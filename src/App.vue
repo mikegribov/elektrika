@@ -1,37 +1,25 @@
 <template>
-  <div id="app">
-    <div>
-    <Canvas width="1000" height="700"></Canvas>
-    </div>
-    <hr/>
-    <element-automate
-      icon-name="write"
-      width="50"
-      height="100"
-      scale="3"
-      state="0"
-      ></element-automate>
-      
-    <hr/>
-
+  <div>
+    <Canvas width="800" height="600" />
+    <!--
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+-->
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import HelloWorld from "./components/HelloWorld.vue";
+import Canvas from "./components/Canvas.vue";
 
-//import BaseElement from './components/elements/base-element.vue'
-import ElementAutomate from '@/components/elements/element-automate.vue'
-
-import Canvas from '@/components/canvas'
-
-export default {
-  name: 'App',
+@Options({
   components: {
-    ElementAutomate,
+    HelloWorld,
     Canvas
-  },
-  
-}
+  }
+})
+export default class App extends Vue {}
 </script>
 
 <style>
