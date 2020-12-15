@@ -8,24 +8,27 @@ import {
 } from "../@Details";
 
 export default class ElementBreaker1PN extends BaseBreaker {
-  constructor(options?: Options | undefined) {
-    super(options);
+
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.label = "1P+N";
   }
 
+
   content() {
     return [
-      [new DetailCorpus(), new DetailCorpus()],
-      [new DetailIndicator(), new DetailIndicator()],
+      [this.newDetail(DetailCorpus), this.newDetail(DetailCorpus)],
+      [this.newDetail(DetailIndicator), this.newDetail(DetailIndicator)],
       [
-        new DetailContact({ label: "2" } as Options),
-        new DetailContact({ label: "N" } as Options)
+        this.newDetail(DetailContact, { label: "2" } as Options),
+        this.newDetail(DetailContact, { label: "N" } as Options)
       ],
       [
-        new DetailContact({ label: "1", positionY: "down" } as Options),
-        new DetailContact({ positionY: "down", label: "N" } as Options)
+        this.newDetail(DetailContact, { label: "1", positionY: "down" } as Options),
+        this.newDetail(DetailContact, { positionY: "down", label: "N" } as Options)
       ],
-      [new DetailHandle({ places: 2 } as Options)]
+      [this.newDetail(DetailHandle, { places: 2 } as Options)]
     ];
   }
 }

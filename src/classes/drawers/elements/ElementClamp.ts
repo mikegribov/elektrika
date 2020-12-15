@@ -3,22 +3,24 @@ import { Options } from "../Options";
 import { DetailCorpusClamp, DetailContact } from "../@Details";
 
 export default class ElementClamp extends BaseElement {
-  constructor(options?: Options) {
-    super(options);
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.sqare = options && options.sqare ? options.sqare : 2.5; //4, 6, 10
     this.options.label = "Clamp-" + this.options.sqare;
     this.options.color = options && options.color ? options.color : "#AAAAAA";
   }
 
+
   content() {
-    const corpus = new DetailCorpusClamp({
+    const corpus = this.newDetail(DetailCorpusClamp, {
       sqare: this.options.sqare,
       color: this.options.color
     } as Options);
     return [
       [corpus],
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           label: "2",
           radius: 1.8,
           placeWidth: corpus.getWidth(),
@@ -26,7 +28,7 @@ export default class ElementClamp extends BaseElement {
         } as Options)
       ],
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           positionY: "down",
           radius: 1.8,
           placeWidth: corpus.getWidth(),
@@ -35,7 +37,7 @@ export default class ElementClamp extends BaseElement {
         } as Options)
       ],
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           positionY: "middle",
           radius: 1.5,
           placeWidth: corpus.getWidth(),

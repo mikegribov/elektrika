@@ -1,17 +1,30 @@
-import Base from "../BaseDrawer";
+import BaseDrawer from "../BaseDrawer";
 import { Options } from "../Options";
 import BaseDetail from '../details/BaseDetail';
 
-export default abstract class BaseElement extends Base {
+
+import DetailContact from "../details/DetailContact";
+
+
+export default abstract class BaseElement extends BaseDrawer {
 
   readonly number = 1;
 
-  constructor(options?: Options | undefined) {
-    super(options);
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.color = options && options.color ? options.color : "#EEEEEE";
   }
 
   abstract content(): Array<Array<BaseDetail>>
+
+
+  newDetail<T extends BaseDetail>(cl: new (options?: Options | undefined, owner?: BaseDrawer | undefined) => T, options?: Options): T {
+    //const self: BaseDrawer = this;
+    //console.log("newDetail: ", this)
+    const obj = new cl(options, this);
+    return obj;
+  }
+
 
   svg() {
     let result = "";
@@ -25,7 +38,7 @@ export default abstract class BaseElement extends Base {
         const x = shift * placeWidth;
         el.options.x = x;
         result += el.svg();
-        shift++;
+        shift++
       });
     });
 

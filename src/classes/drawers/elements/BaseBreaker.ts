@@ -1,4 +1,4 @@
-import BaseElement from "@/classes/drawers/elements/BaseElement";
+import BaseElement from "./BaseElement";
 
 import { Options } from "../Options";
 import {
@@ -9,12 +9,14 @@ import {
 } from "../@Details";
 
 export default class BaseBreaker extends BaseElement {
-  constructor(options: Options | undefined) {
-    super(options);
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.label = "1P";
   }
 
   content() {
+
     return [
       [new DetailCorpus(), new DetailCorpus(), new DetailCorpus()],
       [new DetailIndicator(), new DetailIndicator(), new DetailIndicator()],
@@ -31,4 +33,5 @@ export default class BaseBreaker extends BaseElement {
       [new DetailHandle({ places: 3 } as Options)]
     ];
   }
+
 }

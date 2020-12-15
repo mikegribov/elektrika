@@ -10,33 +10,37 @@ import {
 } from "../@Details";
 
 export default class ElementRcd3 extends BaseBreaker {
-  constructor(options?: Options) {
-    super(options);
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.label = "УЗО";
   }
 
+
   content() {
+
     return [
-      [new DetailCorpus4()],
+      [this.newDetail(DetailCorpus4)],
       [
-        new Empty(),
-        new Empty(),
-        new DetailButton(),
-        new DetailIndicator({ positionX: "right", positionY: "up" } as Options)
+        this.newDetail(Empty),
+        this.newDetail(Empty),
+        this.newDetail(DetailButton),
+        this.newDetail(DetailIndicator, { positionX: "right", positionY: "up" } as Options)
       ],
       [
-        new DetailContact({ label: "2" } as Options),
-        new DetailContact({ label: "4" } as Options),
-        new DetailContact({ label: "6" } as Options),
-        new DetailContact({ label: "N" } as Options)
+        this.newDetail(DetailContact, { label: "2" } as Options),
+        this.newDetail(DetailContact, { label: "4" } as Options),
+        this.newDetail(DetailContact, { label: "6" } as Options),
+        this.newDetail(DetailContact, { label: "N" } as Options)
       ],
       [
-        new DetailContact({ positionY: "down", label: "1" } as Options),
-        new DetailContact({ positionY: "down", label: "3" } as Options),
-        new DetailContact({ positionY: "down", label: "5" } as Options),
-        new DetailContact({ positionY: "down", label: "N" } as Options)
+        this.newDetail(DetailContact, { positionY: "down", label: "1" } as Options),
+        this.newDetail(DetailContact, { positionY: "down", label: "3" } as Options),
+        this.newDetail(DetailContact, { positionY: "down", label: "5" } as Options),
+        this.newDetail(DetailContact, { positionY: "down", label: "N" } as Options)
       ],
-      [new Empty(), new Empty(), new Empty(), new DetailHandle()]
+      [this.newDetail(Empty), this.newDetail(Empty), this.newDetail(Empty), this.newDetail(DetailHandle)]
     ];
+
   }
 }

@@ -8,38 +8,42 @@ import {
 } from "../@Details";
 
 export default class ElementBreaker3PN extends BaseBreaker {
-  constructor(options?: Options) {
-    super(options);
+
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.label = "3P+N";
+    this.options.width = 4;
   }
+
 
   content() {
     return [
       [
-        new DetailCorpus(),
-        new DetailCorpus(),
-        new DetailCorpus(),
-        new DetailCorpus()
+        this.newDetail(DetailCorpus),
+        this.newDetail(DetailCorpus),
+        this.newDetail(DetailCorpus),
+        this.newDetail(DetailCorpus)
       ],
       [
-        new DetailIndicator(),
-        new DetailIndicator(),
-        new DetailIndicator(),
-        new DetailIndicator()
+        this.newDetail(DetailIndicator),
+        this.newDetail(DetailIndicator),
+        this.newDetail(DetailIndicator),
+        this.newDetail(DetailIndicator)
       ],
       [
-        new DetailContact({ label: "2" } as Options),
-        new DetailContact({ label: "4" } as Options),
-        new DetailContact({ label: "6" } as Options),
-        new DetailContact({ label: "N" } as Options)
+        this.newDetail(DetailContact, { label: "2" } as Options),
+        this.newDetail(DetailContact, { label: "4" } as Options),
+        this.newDetail(DetailContact, { label: "6" } as Options),
+        this.newDetail(DetailContact, { label: "N" } as Options)
       ],
       [
-        new DetailContact({ positionY: "down", label: "1" } as Options),
-        new DetailContact({ positionY: "down", label: "3" } as Options),
-        new DetailContact({ positionY: "down", label: "5" } as Options),
-        new DetailContact({ positionY: "down", label: "N" } as Options)
+        this.newDetail(DetailContact, { positionY: "down", label: "1" } as Options),
+        this.newDetail(DetailContact, { positionY: "down", label: "3" } as Options),
+        this.newDetail(DetailContact, { positionY: "down", label: "5" } as Options),
+        this.newDetail(DetailContact, { positionY: "down", label: "N" } as Options)
       ],
-      [new DetailHandle({ places: 4 } as Options)]
+      [this.newDetail(DetailHandle, { places: 4 } as Options)]
     ];
   }
 }

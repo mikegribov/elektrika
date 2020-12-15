@@ -8,8 +8,9 @@ import {
 } from "../@Details";
 
 export default class BaseContacter extends BaseElement {
-  constructor(options?: Options) {
-    super(options);
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.formula = options && options.formula ? options.formula : "2O";
   }
 
@@ -17,10 +18,11 @@ export default class BaseContacter extends BaseElement {
     const places = 1;
     const radiusK = 1;
     return [
-      [new DetailCorpus({ width: places } as Options)],
-      [new DetailIndicator()],
+
+      [this.newDetail(DetailCorpus, { width: places } as Options)],
+      [this.newDetail(DetailIndicator)],
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           label: "1",
           height: 0.99,
           width: places / 2,
@@ -28,7 +30,7 @@ export default class BaseContacter extends BaseElement {
         } as Options)
       ],
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           label: "3",
           height: 0.99,
           width: (places * 3) / 2,
@@ -37,7 +39,7 @@ export default class BaseContacter extends BaseElement {
       ],
 
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           label: "2",
           height: 0.99,
           width: places / 2,
@@ -46,7 +48,7 @@ export default class BaseContacter extends BaseElement {
         } as Options)
       ],
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           label: "4",
           height: 0.99,
           width: (places * 3) / 2,
@@ -56,7 +58,7 @@ export default class BaseContacter extends BaseElement {
       ],
 
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           label: "A1",
           height: 0.82,
           width: places,
@@ -64,7 +66,7 @@ export default class BaseContacter extends BaseElement {
         } as Options)
       ],
       [
-        new DetailContact({
+        this.newDetail(DetailContact, {
           positionY: "down",
           label: "A2",
           height: 0.82,
@@ -73,11 +75,70 @@ export default class BaseContacter extends BaseElement {
         } as Options)
       ]
     ];
+
+    /*
+    [new DetailCorpus({ width: places } as Options)],
+    [new DetailIndicator()],
+    [
+      new DetailContact({
+        label: "1",
+        height: 0.99,
+        width: places / 2,
+        radius: 1.9 * radiusK
+      } as Options)
+    ],
+    [
+      new DetailContact({
+        label: "3",
+        height: 0.99,
+        width: (places * 3) / 2,
+        radius: 1.9 * radiusK
+      } as Options)
+    ],
+
+    [
+      new DetailContact({
+        label: "2",
+        height: 0.99,
+        width: places / 2,
+        radius: 1.9 * radiusK,
+        positionY: "down"
+      } as Options)
+    ],
+    [
+      new DetailContact({
+        label: "4",
+        height: 0.99,
+        width: (places * 3) / 2,
+        radius: 1.9 * radiusK,
+        positionY: "down"
+      } as Options)
+    ],
+
+    [
+      new DetailContact({
+        label: "A1",
+        height: 0.82,
+        width: places,
+        radius: 2.2 * radiusK
+      } as Options)
+    ],
+    [
+      new DetailContact({
+        positionY: "down",
+        label: "A2",
+        height: 0.82,
+        width: places,
+        radius: 2.2 * radiusK
+      } as Options)
+    ]
+  ];
+  */
   }
 
   scheme() {
-    const x0 = this.getWidth() / 2 - 1;
-    const y0 = this.options.placeHeight / 2 - 10;
+    const x0 = this.getWidth() / 2 - 1 + this.offsetX;
+    const y0 = this.options.placeHeight / 2 - 10 + this.offsetY;
 
     return `
         <g stroke-width="${this.options.strokeWidth / 4}" stroke="${this.options.strokeColor}" fill="${this.options.color}">

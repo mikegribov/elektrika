@@ -9,18 +9,21 @@ import {
 } from "../@Details";
 
 export default class ElementBreaker1P extends BaseBreaker {
-  constructor(options?: Options | undefined) {
-    super(options);
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.label = "1P";
   }
 
   content() {
+
     return [
-      [new DetailCorpus()],
-      [new DetailIndicator()],
-      [new DetailContact({ label: "2" } as Options)],
-      [new DetailContact({ positionY: "down", label: "1" } as Options)],
-      [new DetailHandle()]
-    ];
+      [this.newDetail(DetailCorpus)],
+      [this.newDetail(DetailIndicator)],
+      [this.newDetail(DetailContact, { label: "2" } as Options)],
+      [this.newDetail(DetailContact, { positionY: "down", label: "1" } as Options)],
+      [this.newDetail(DetailHandle)]
+    ]
+
   }
 }

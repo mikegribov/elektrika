@@ -1,4 +1,5 @@
 import BaseDetail from "./BaseDetail";
+import BaseDrawer from "../BaseDrawer";
 import { Options } from "../Options";
 
 //const listL = [41.5, 41.5, 42, 46];
@@ -8,10 +9,13 @@ const listW = [5.4, 6.3, 8, 10.5];
 const SQARES = [2.5, 4, 6, 10];
 
 export default class DetailCorpusClamp extends BaseDetail {
-  constructor(options?: Options) {
-    super(options);
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.sqare = options && options.sqare ? options.sqare : 2.5; //4, 6, 10
   }
+
+
 
   getWidth() {
     const i = SQARES.findIndex(val => val == this.options.sqare);
@@ -28,8 +32,8 @@ export default class DetailCorpusClamp extends BaseDetail {
     const W = this.getWidth();
     const H = this.getHeight();
     const PH = this.options.placeHeight;
-    const x = this.options.x;
-    const y = this.options.y - (H - PH) / 2;
+    const x = this.offsetX;
+    const y = this.offsetY - (H - PH) / 2;
     const d1 = 5 / 2;
     const d2 = 25 / 2;
     return `

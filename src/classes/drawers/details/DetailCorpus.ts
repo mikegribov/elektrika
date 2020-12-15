@@ -1,19 +1,24 @@
-import BaseDetail from "./BaseDetail";
+import BaseDrawer from "../BaseDrawer";
 import { Options } from "../Options";
+import BaseDetail from "./BaseDetail";
 
 export default class DetailCorpus extends BaseDetail {
-  constructor(options?: Options) {
-    super(options);
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.color = options && options.color ? options.color : "#FEFEFE";
   }
+
+
 
   svg(): string {
     const d1 = 45 / 2;
     const d2 = 25 / 2;
     const w = this.getWidth();
     const h = this.getHeight();
-    const x = this.options.x;
-    const y = this.options.y;
+    const x = this.offsetX;
+    const y = this.offsetY;
+    //console.log("Owner:", this.owner)
     return `
         <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1" :stroke-width="${this.options.strokeWidth
       }" fill="${this.options.color}" stroke="${this.options.strokeColor}"/>        

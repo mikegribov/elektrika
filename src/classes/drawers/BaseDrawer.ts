@@ -1,3 +1,5 @@
+
+
 import { Options } from "./Options";
 
 const colours = {
@@ -26,15 +28,37 @@ const colours = {
   "wheat": "#f5deb3", "white": "#ffffff", "whitesmoke": "#f5f5f5",
   "yellow": "#ffff00", "yellowgreen": "#9acd32"
 };
-type tColorNames = keyof typeof colours;
+type tColourNames = keyof typeof colours;
 
 export default abstract class BaseDrawer {
 
-
+  owner: BaseDrawer | undefined;
   options: Options = new Options();
 
-  constructor(options?: Options | undefined) {
+  constructor(options?: Options | undefined, owner?: BaseDrawer | undefined) {
+    this.owner = owner;
     this.options.assign(options);
+    this.init(options);
+  }
+
+  init(options: Options | undefined) {
+    // for child initialization
+  }
+
+  get offsetX(): number {
+    return this.options.x + (this.owner ? this.owner.options.x : 0);
+  }
+
+  set offsetX(value: number) {
+    this.options.x = value - (this.owner ? this.owner.options.x : 0);
+  }
+
+  get offsetY(): number {
+    return this.options.y + (this.owner ? this.owner.options.y : 0);
+  }
+
+  set offsetY(value: number) {
+    this.options.y = value - (this.owner ? this.owner.options.y : 0);
   }
 
   get id(): string {
@@ -45,16 +69,21 @@ export default abstract class BaseDrawer {
     return this.constructor.name;
   }
 
-  colourNameToHex(colour: tColorNames): string | undefined {
+
+  colourNameToHex(colour: tColourNames): string | undefined {
     const result = colours[colour];
     return result;
 
   }
 
 
+  containsPoint(x: number, y: number) {
+    return (x > this.offsetX && x < this.offsetX + this.getWidth() && y > this.offsetY && x < this.offsetY + this.getHeight())
+  }
+
   changeColour(colour: string, brightness = 0) {
 
-    const c = this.colourNameToHex(colour as tColorNames);
+    const c = this.colourNameToHex(colour as tColourNames);
     if (c) colour = c;
     let usePound = false;
     if (colour[0] == "#") {
@@ -91,6 +120,14 @@ export default abstract class BaseDrawer {
   }
 
   abstract svg(): string;
+
+  asGroup(): string {
+    return `<g>
+        ${this.svg()}
+        </g>
+        `;
+  }
+
 
   asSymbol(): string {
 

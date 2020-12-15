@@ -1,17 +1,21 @@
-import BaseDetail from "./BaseDetail";
+import BaseDrawer from "../BaseDrawer";
 import { Options } from "../Options";
+import BaseDetail from "./BaseDetail";
 
 export default class DetailContact extends BaseDetail {
-  constructor(options?: Options) {
-    super(options);
+
+
+  init(options: Options | undefined) {
+    super.init(options);
     this.options.radius = options && options.radius ? options.radius : 3;
     this.options.positionY = options && options.positionY ? options.positionY : "up"; // up, down
     this.options.label = options && options.label ? options.label : "";
   }
 
+
   svg() {
-    const x = this.options.x + this.getWidth() / 2;
-    const y =
+    const x = this.offsetX + this.getWidth() / 2;
+    const y = this.offsetY +
       (this.options.positionY == "middle"
         ? this.getHeight() / 2
         : this.options.positionY == "up"
