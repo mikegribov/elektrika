@@ -20,6 +20,7 @@ interface IntOptions {
     colorOff: string;
     sqare: TCrossSqare;
     formula: string;
+    number: number;
 }
 
 export type TDirectionX = 'left' | 'right' | 'center';
@@ -49,6 +50,7 @@ export class Options implements IntOptions {
     colorOff = 'green';
     sqare: TCrossSqare = 1.5;
     formula = '20';
+    number = 0;
 
     assign(value: IntOptions | undefined): void {
 
@@ -73,6 +75,7 @@ export class Options implements IntOptions {
             if (value.colorOff !== undefined) this.colorOff = value.colorOff;
             if (value.sqare !== undefined) this.sqare = value.sqare;
             if (value.formula !== undefined) this.formula = value.formula;
+            if (value.number !== undefined) this.number = value.number;
 
         }
 

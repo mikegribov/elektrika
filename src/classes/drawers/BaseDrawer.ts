@@ -61,9 +61,6 @@ export default abstract class BaseDrawer {
     this.options.y = value - (this.owner ? this.owner.options.y : 0);
   }
 
-  get id(): string {
-    return this.name;
-  }
 
   get name(): string {
     return this.constructor.name;
@@ -78,7 +75,7 @@ export default abstract class BaseDrawer {
 
 
   containsPoint(x: number, y: number) {
-    return (x > this.offsetX && x < this.offsetX + this.getWidth() && y > this.offsetY && x < this.offsetY + this.getHeight())
+    return (x > this.offsetX && x < this.offsetX + this.getWidth() && y > this.offsetY && y < this.offsetY + this.getHeight())
   }
 
   changeColour(colour: string, brightness = 0) {
@@ -109,6 +106,10 @@ export default abstract class BaseDrawer {
 
   }
 
+  get id() {
+    return this.name;
+  }
+
 
   getWidth(): number {
     return this.options.placeWidth * this.options.width;
@@ -122,7 +123,10 @@ export default abstract class BaseDrawer {
   abstract svg(): string;
 
   asGroup(): string {
-    return `<g>
+    // transform="scale(x-value, y-value); translate(<x> [<y>]); rotate(<a> [<x> <y>]); skewX(<a>); skewY(<a>)"
+    // opacity="0.5"
+
+    return `<g class="drawer" ${this.id ? ' id="' + this.id + '"' : ""}>
         ${this.svg()}
         </g>
         `;

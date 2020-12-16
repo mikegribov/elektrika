@@ -13,10 +13,10 @@ export default class ElementBreaker1P extends BaseBreaker {
   init(options: Options | undefined) {
     super.init(options);
     this.options.label = "1P";
+    this._number = 2;
   }
 
   content() {
-
     return [
       [this.newDetail(DetailCorpus)],
       [this.newDetail(DetailIndicator)],

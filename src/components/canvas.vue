@@ -3,6 +3,7 @@
     @mouseDown="mouseDown"
     @mouseUp="mouseUp"
     @mouseMove="mouseMove"
+    @click="mouseClick"
     xmlns="http://www.w3.org/2000/svg"
     :width="width"
     :height="height"
@@ -21,18 +22,6 @@
     ></rect>
 
     <g v-html="getSvgContent()"></g>
-    <use xlink:href="#DinRail" x="0" y="75" />
-
-    <use xlink:href="#ElementBreaker1P" x="5" y="50" />
-    <use xlink:href="#ElementBreaker1PN" x="25" y="50" />
-    <use xlink:href="#ElementBreaker3P" x="65" y="50" />
-    <use xlink:href="#ElementBreaker3PN" x="120" y="50" />
-    <use xlink:href="#ElementRcd" x="200" y="50" />
-    <use xlink:href="#ElementRcd3" x="240" y="50" />
-    <use xlink:href="#ElementClamp" x="320" y="50" />
-    <use xlink:href="#ElementClampN" x="330" y="50" />
-    <use xlink:href="#ElementClampE" x="340" y="50" />
-    <use xlink:href="#ElementContacter1" x="350" y="50" />
   </svg>
 </template>
 
@@ -68,19 +57,22 @@ import DinRail from "@/classes/drawers/DinRail";
 })
 export default class Canvas extends Vue {
   elements = [
-    new DinRail({ x: 5, y: 35 }),
-
-    new ElementRcd({ x: 10, y: 10 }),
-    new ElementRcd3({ x: 50, y: 10 }),
-    new ElementClamp({ x: 130, y: 10 }),
-    new ElementClampN({ x: 140, y: 10 }),
-    new ElementClampE({ x: 150, y: 10 }),
-    new ElementContacter1({ x: 160, y: 10 }),
-    new ElementBreaker1P({ x: 180, y: 10 }),
-    new ElementBreaker1PN({ x: 200, y: 10 }),
-    new ElementBreaker3P({ x: 240, y: 10 }),
-    new ElementBreaker3PN({ x: 300, y: 10 }),
+    new DinRail({ x: 5, y: 35, number: 1 }),
+    new ElementRcd({ x: 10, y: 10, number: 2 }),
+    new ElementRcd3({ x: 50, y: 10, number: 3 }),
+    new ElementClamp({ x: 130, y: 10, number: 4 }),
+    new ElementClampN({ x: 140, y: 10, number: 5 }),
+    new ElementClampE({ x: 150, y: 10, number: 6 }),
+    new ElementContacter1({ x: 160, y: 10, number: 7 }),
+    new ElementBreaker1P({ x: 180, y: 10, number: 8 }),
+    new ElementBreaker1PN({ x: 200, y: 10, number: 9 }),
+    new ElementBreaker3P({ x: 240, y: 10, number: 10 }),
+    new ElementBreaker3PN({ x: 300, y: 10, number: 11 }),
   ];
+
+  dragged = null;
+  dragStartPoint = null;
+  dragShift = { x: 0, y: 0 };
 
   svgContent = "";
 
@@ -92,28 +84,58 @@ export default class Canvas extends Vue {
     return { x, y };
   }
 
-  mouseDown(e) {
-    const point = this.getPosition({ x: e.pageX, y: e.pageY });
-    //console.log(point);
+  elementByPosition({ x, y }) {
     for (let i = this.elements.length; i--; i >= 0) {
       const el = this.elements[i];
-      const newDetail = el.newDetail(ElementBreaker3P);
-      if (el.containsPoint(point.x, point.y)) {
-        console.log("cliclOn: ", el.name);
-        return;
+      if (el.containsPoint(x, y)) {
+        return el;
       }
     }
-    //console.log("mouseDown:", this.getPosition({ x: e.pageX, y: e.pageY }));
   }
 
-  mouseUp(e) {
-    //console.log("mouseUp:", e);
+  elementByPoint(point) {
+    const el = this.elementByPosition(
+      this.getPosition({ x: point.pageX, y: point.pageY })
+    );
+    return el;
+  }
+
+  mouseDown(e) {
+    const el = this.elementByPoint(e);
+
+    if (el) {
+      this.offsetY = 200;
+      el.move();
+
+      this.dragged = el;
+      this.dragStartPoint = e;
+      const point = this.getPosition(e);
+      this.dragShift = {
+        x: point.x - this.dragged.offsetX,
+        y: point.y - this.dragged.offsetY,
+      };
+    }
   }
   /*
-  mouseMove(e) {
-    
+  mouseClick(e) {
+    const point = this.getPosition({ x: e.pageX, y: e.pageY });
+    const el = this.elementByPosition(point);
+    if (el) console.log(el.name);
+
+    //console.log("mouseDown:", this.getPosition({ x: e.pageX, y: e.pageY }));
   }
-  */
+*/
+  mouseUp(e) {
+    this.dragged = null;
+  }
+
+  mouseMove(e) {
+    if (this.dragged) {
+      const point = this.getPosition(e);
+      this.dragged.offsetX = point.x - point.x;
+      this.dragged.offsetY = point.y - point.y;
+    }
+  }
 
   getSvgContent() {
     if (!this.svgContent) {
@@ -201,4 +223,13 @@ export default {
 */
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.drawer {
+  transition: 0.3s;
+  /* transform: translate(200px, 200px); */
+}
+
+.drawer:hover {
+  transform: translate(0, -2px);
+}
+</style>
